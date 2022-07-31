@@ -6,7 +6,7 @@ const app = express()
 app.use(express.json())
 const PORT = process.env.PORT || 3000;
 
-app.use( '/api/v1', v1WorkoutRouter)
+app.use( '/api/v1/workouts', v1WorkoutRouter)
 
 
 app.listen(PORT, () => {
