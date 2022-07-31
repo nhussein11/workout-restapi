@@ -7,7 +7,7 @@ const router = express.Router();
 router
     .get('/', workoutController.getAllWorkouts)
     .get('/:workoutId', workoutController.getOneWorkout )
-    .post('/:workoutId', workoutController.createNewWorkout)
+    .post('/', workoutController.createNewWorkout)
     .patch('/:workoutId',  workoutController.updateOneWorkout)
     .delete('/:workoutId', workoutController.deleteOneWorkout)
 

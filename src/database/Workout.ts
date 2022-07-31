@@ -1,9 +1,23 @@
 const DB = require('./db.json');
+const { saveToDataBase } = require('./utils')
 
-const getWorkouts = () => {
+const getAllWorkouts = () => {
     return DB.workouts;
 }
 
-module.exports = {
-    getWorkouts
+const createNewWorkout = (newWorkout: any) => {
+    const isAlreadyAdded =
+        DB.workouts.findIndex((workout: any) => workout.name === newWorkout.name) > -1;
+    
+    if (isAlreadyAdded) {return;}
+
+    DB.workouts.push(newWorkout);
+    saveToDataBase(DB);
 }
+
+module.exports = {
+    getAllWorkouts,
+    createNewWorkout
+}
+
+export { };
