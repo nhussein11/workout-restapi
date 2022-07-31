@@ -4,7 +4,6 @@ const workoutController = require('../../controllers/workoutController')
 
 const router = express.Router();
 
-
 router
     .get('/', workoutController.getAllWorkouts)
     .get('/:workoutId', workoutController.getOneWorkout )
@@ -12,3 +11,4 @@ router
     .patch('/:workoutId',  workoutController.updateOneWorkout)
     .delete('/:workoutId', workoutController.deleteOneWorkout)
 
+module.exports = router;

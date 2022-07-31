@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-const getAllWorkouts = (req: Request, res: Response) => {
+const getAllWorkouts = (_req: Request, res: Response) => {
     res.send(`Get all workouts`)
 }
 
@@ -20,10 +20,10 @@ const deleteOneWorkout = (req: Request, res: Response) => {
     res.send(`Delete workout ${req.params.workoutId}`)
 }
 
-module.exports = [
+module.exports = {
     getAllWorkouts,
     getOneWorkout,
     createNewWorkout,
     updateOneWorkout,
     deleteOneWorkout
-]
+}
