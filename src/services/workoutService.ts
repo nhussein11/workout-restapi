@@ -30,9 +30,22 @@ const createNewWorkout = (newWorkout: WorkoutFromRequest) => {
     return createdWorout;
 }
 
-const updateOneWorkout = () => {
-    return;
+const updateOneWorkout = (id:string, newWorkout: WorkoutFromRequest) => {
+    const timestamp: number = Date.now();  
+    const allWorkouts = WorkoutDB.getAllWorkouts();
+    const workoutIndex = allWorkouts.findIndex((workout : Workout) => workout.id === id)
+    
+    const workoutToUpdate : Workout = {
+        ... newWorkout,
+        id: allWorkouts[workoutIndex].id,
+        createdAt: new Date(timestamp),
+        updatedAt: new Date(timestamp)
+    }
+
+    allWorkouts[workoutIndex] = workoutToUpdate;
+    return newWorkout;
 }
+
 const deleteOneWorkout = () => {
     return;
 }
