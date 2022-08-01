@@ -1,6 +1,6 @@
 # Workout REST API :weight_lifting:
 
-Small rest api example, using typescript, express and nodejs.
+Small rest api example, using Typescript, Express and Nodejs.
 
 ## API Reference :bicyclist:
 
