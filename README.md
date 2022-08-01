@@ -23,7 +23,7 @@ Small rest api example, using typescript, express and nodejs.
 #### Create workout
 
 ```http
-  GET /api/v1/workouts/${workout}
+  POST /api/v1/workouts/${workout}
 ```
 
 | Parameter | Type     | Description                       |
@@ -34,13 +34,23 @@ Small rest api example, using typescript, express and nodejs.
 #### Update workout
 
 ```http
-  GET /api/v1/workouts/${id}&${workout}
+  PATCH /api/v1/workouts/${id}&${workout}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of workout to update |
 | `workout`      | `object` | **Required**. Workout to update |
+
+#### Delete workout
+
+```http
+  DELETE /api/v1/workouts/${id}&${workout}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of workout to delete |
 
 
 ## Feedback :rocket:
