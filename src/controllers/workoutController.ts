@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-const workoutService = require('../services/workoutService')
+import { WorkoutFromRequest } from '../database/models/Workout'
 
+const workoutService = require('../services/workoutService')
 
 const getAllWorkouts = (_req: Request, res: Response) => {
     const allWorkouts = workoutService.getAllWorkouts();
@@ -8,8 +9,8 @@ const getAllWorkouts = (_req: Request, res: Response) => {
 }
 
 const getOneWorkout = (req: Request, res: Response) => {
-    // const workout = workoutService.getOneWorkout(req.params.workoutId);
-    res.send(`Get workout ${req.params.workoutId}`)
+    const workout = workoutService.getOneWorkout(req.params.workoutId);
+    res.send(`Get workout ${JSON.stringify(workout)}`)
 }
 
 const createNewWorkout = (req: Request, res: Response) => {
@@ -26,7 +27,8 @@ const createNewWorkout = (req: Request, res: Response) => {
     {
         return;
     }
-    const newWorkout = {
+
+    const newWorkout : WorkoutFromRequest  = {
         name : body.name,
         mode : body.mode,
         equipment : body.equipment,
@@ -47,8 +49,6 @@ const deleteOneWorkout = (req: Request, res: Response) => {
     workoutService.deleteOneWorkout(req.params.workoutId);
     res.send(`Delete workout ${req.params.workoutId}`)
 }
-
-
 
 module.exports = {
     getAllWorkouts,

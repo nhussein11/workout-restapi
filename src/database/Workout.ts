@@ -1,3 +1,5 @@
+import { Workout } from "./models/Workout";
+
 const DB = require('./db.json');
 const { saveToDataBase } = require('./utils')
 
@@ -5,9 +7,9 @@ const getAllWorkouts = () => {
     return DB.workouts;
 }
 
-const createNewWorkout = (newWorkout: any) => {
+const createNewWorkout = (newWorkout: Workout) => {
     const isAlreadyAdded =
-        DB.workouts.findIndex((workout: any) => workout.name === newWorkout.name) > -1;
+        DB.workouts.findIndex((workout: Workout) => workout.name === newWorkout.name) > -1;
     
     if (isAlreadyAdded) {return;}
 

@@ -1,24 +1,35 @@
-const Workout = require ('../database/Workout')
-const {v4:uuid} = require('uuid')
+import { Workout, WorkoutFromRequest } from "../database/models/Workout";
+
+const  WorkoutDB = require('../database/Workout')
+const { v4: uuid } = require('uuid')
 
 const getAllWorkouts = () => {
-    const allWorkouts = Workout.getAllWorkouts();
+    const allWorkouts = WorkoutDB.getAllWorkouts();
     return allWorkouts;
 }
-const getOneWorkout = () => {
-    return;
+
+const getOneWorkout = (id:string) : Workout | undefined => {
+    const allWorkouts = WorkoutDB.getAllWorkouts();
+    const workout = allWorkouts.find((workout : Workout) => workout.id === id)
+    return (workout)
+    ? workout
+    : undefined
 }
-const createNewWorkout = (newWorkout:any) => {
-    const workOutToInsert = {
-        ... newWorkout,
+
+const createNewWorkout = (newWorkout: WorkoutFromRequest) => {
+    const timestamp: number = Date.now();  
+
+    const workOutToInsert: Workout = {
+        ...newWorkout,
         id: uuid(),
-        createdAt : new Date().toLocaleDateString('en-US',{timeZone:'UTC'}),
-        updatedAt : new Date().toLocaleDateString('en-US',{timeZone:'UTC'})
+        createdAt: new Date(timestamp),
+        updatedAt: new Date(timestamp)
     }
 
-    const createdWorout = Workout.createNewWorkout(workOutToInsert);
+    const createdWorout = WorkoutDB.createNewWorkout(workOutToInsert);
     return createdWorout;
 }
+
 const updateOneWorkout = () => {
     return;
 }
