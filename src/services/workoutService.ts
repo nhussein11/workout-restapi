@@ -3,9 +3,9 @@ import { Workout, WorkoutFromRequest } from "../database/models/Workout";
 const WorkoutDB = require('../database/Workout')
 const { v4: uuid } = require('uuid')
 
-const getAllWorkouts = (): Workout[] => {
+const getAllWorkouts = (filterParams:any): Workout[] => {
     try {
-        const allWorkouts = WorkoutDB.getAllWorkouts();
+        const allWorkouts = WorkoutDB.getAllWorkouts(filterParams);
         return allWorkouts;
     } catch (error: any) {
         throw error

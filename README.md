@@ -10,6 +10,11 @@ Small rest api example, using typescript, express and nodejs.
   GET /api/v1/workouts
 ```
 
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `string` | **Optional**. Name of workouts to fetch |
+| `mode`      | `string` | **Optional**. Mode of workouts to fetch |
+
 #### Get workout
 
 ```http
@@ -20,7 +25,7 @@ Small rest api example, using typescript, express and nodejs.
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of workout to fetch |
 
-#### Get workout record
+#### Get all records connected to a workout
 
 ```http
   GET /api/v1/workouts/${id}/records

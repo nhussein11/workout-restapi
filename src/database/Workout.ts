@@ -3,9 +3,22 @@ import { Workout } from "./models/Workout";
 const DB = require('./db.json');
 const { saveToDataBase } = require('./utils')
 
-const getAllWorkouts = () => {
+const getAllWorkouts = (filterParams:any) => {
     try {
-        return DB.workouts;
+        let workouts = DB.workouts;
+        if(filterParams.name){
+            return DB.workouts.filter(
+                (workout:Workout) => 
+                workout.name.toLowerCase().includes(filterParams.name)
+            )
+        }
+        if(filterParams.mode){
+            return DB.workouts.filter(
+                (workout:Workout) => 
+                workout.mode.toLowerCase().includes(filterParams.mode)
+            )
+        }
+        return workouts;
     } catch (error: any) {
         throw { status: 500, message: error }
     }

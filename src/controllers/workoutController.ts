@@ -4,8 +4,9 @@ import { WorkoutFromRequest } from '../database/models/Workout'
 const workoutService = require('../services/workoutService')
 
 const getAllWorkouts = (_req: Request, res: Response) => {
+    const {name,mode} = _req.query;
     try {
-        const allWorkouts = workoutService.getAllWorkouts();
+        const allWorkouts = workoutService.getAllWorkouts({name,mode});
         res.status(200).send({ status:'OK', data: allWorkouts });
     } catch (error: any) {
         res
