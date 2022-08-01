@@ -1,4 +1,4 @@
-const Record = require("../database/Record");
+const Record = require('../database/Record');
 
 const getRecordForWorkout = (workoutId: string) => {
     try {

@@ -20,6 +20,16 @@ Small rest api example, using typescript, express and nodejs.
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of workout to fetch |
 
+#### Get workout record
+
+```http
+  GET /api/v1/workouts/${id}/records
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of workout to fetch |
+
 #### Create workout
 
 ```http
