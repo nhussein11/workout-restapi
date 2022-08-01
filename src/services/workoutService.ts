@@ -1,23 +1,20 @@
 import { Workout, WorkoutFromRequest } from "../database/models/Workout";
 
-const  WorkoutDB = require('../database/Workout')
+const WorkoutDB = require('../database/Workout')
 const { v4: uuid } = require('uuid')
 
-const getAllWorkouts = () => {
+const getAllWorkouts = (): Workout[] => {
     const allWorkouts = WorkoutDB.getAllWorkouts();
     return allWorkouts;
 }
 
-const getOneWorkout = (id:string) : Workout | undefined => {
-    const allWorkouts = WorkoutDB.getAllWorkouts();
-    const workout = allWorkouts.find((workout : Workout) => workout.id === id)
-    return (workout)
-    ? workout
-    : undefined
+const getOneWorkout = (workoutId: string): Workout | undefined => {
+    const workout = WorkoutDB.getOneWorkout(workoutId);
+    return workout;
 }
 
 const createNewWorkout = (newWorkout: WorkoutFromRequest) => {
-    const timestamp: number = Date.now();  
+    const timestamp: number = Date.now();
 
     const workOutToInsert: Workout = {
         ...newWorkout,
@@ -30,25 +27,13 @@ const createNewWorkout = (newWorkout: WorkoutFromRequest) => {
     return createdWorout;
 }
 
-const updateOneWorkout = (id:string, newWorkout: WorkoutFromRequest) => {
-    const timestamp: number = Date.now();  
-    const allWorkouts = WorkoutDB.getAllWorkouts();
-    const workoutIndex = allWorkouts.findIndex((workout : Workout) => workout.id === id)
-    
-    const workoutToUpdate : Workout = {
-        ... newWorkout,
-        id: allWorkouts[workoutIndex].id,
-        createdAt: new Date(timestamp),
-        updatedAt: new Date(timestamp)
-    }
-
-    allWorkouts[workoutIndex] = workoutToUpdate;
-    return newWorkout;
+const updateOneWorkout = (workoutId: string, changes: WorkoutFromRequest) => {
+    const updatedWorkout = WorkoutDB.updateOneWorkout(workoutId,changes)
+    return updatedWorkout;
 }
 
-const deleteOneWorkout = (id:string) => {
-    
-    return;
+const deleteOneWorkout = (workoutId: string) => {
+    WorkoutDB.deleteOneWorkout(workoutId)
 }
 
 
