@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 router
-    .get('/',cache("2 minutes"), workoutController.getAllWorkouts)
+    .get('/', workoutController.getAllWorkouts)
     .get('/:workoutId', workoutController.getOneWorkout )
     .get('/:workoutId/records', recordController.getRecordForWorkout)
     .post('/', workoutController.createNewWorkout)

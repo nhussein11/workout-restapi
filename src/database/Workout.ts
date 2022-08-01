@@ -3,6 +3,29 @@ import { Workout } from "./models/Workout";
 const DB = require('./db.json');
 const { saveToDataBase } = require('./utils')
 
+
+/**
+ * @openapi
+ * /api/v1/workouts:
+ *   get:
+ *     tags:
+ *       - Workouts
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     type: object
+ */
 const getAllWorkouts = (filterParams:any) => {
     try {
         let workouts = DB.workouts;
@@ -24,6 +47,7 @@ const getAllWorkouts = (filterParams:any) => {
     }
 }
 
+
 const getOneWorkout = (workoutId: string) => {
     try {
         const workout = DB.workouts.find((workout: Workout) => workout.id === workoutId);
@@ -38,6 +62,7 @@ const getOneWorkout = (workoutId: string) => {
         throw { status: error?.status || 500, message: error?.message || error }
     }
 }
+
 
 const createNewWorkout = (newWorkout: Workout) => {
 
@@ -60,6 +85,7 @@ const createNewWorkout = (newWorkout: Workout) => {
     }
 
 }
+
 
 const updateOneWorkout = (workoutId: string, changes: Workout) => {
 
@@ -102,6 +128,7 @@ const updateOneWorkout = (workoutId: string, changes: Workout) => {
 
 
 }
+
 
 const deleteOneWorkout = (workoutId: string) => {
     try{
