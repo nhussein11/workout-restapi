@@ -72,8 +72,11 @@ To use optional parameters, for example 'mode', you should: /api/v1/workouts?mod
 
 #### API DOCS
 Search: http://localhost:3000/api/v1/docs/{endpoint}
-For example: http://localhost:3000/api/v1/docs/workouts#/Workouts
 
+For example: 
+```
+http://localhost:3000/api/v1/docs/workouts#/Workouts
+```
 ## Feedback :rocket:
 
 If you have any feedback, feel free to create a new issue on this project! 
