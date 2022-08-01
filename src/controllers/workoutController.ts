@@ -5,44 +5,60 @@ const workoutService = require('../services/workoutService')
 
 const getAllWorkouts = (_req: Request, res: Response) => {
     const allWorkouts = workoutService.getAllWorkouts();
-    res.status(200).send({data: allWorkouts});
+    res.status(200).send({ data: allWorkouts });
 }
 
 const getOneWorkout = (req: Request, res: Response) => {
-    const workout = workoutService.getOneWorkout(req.params.workoutId);
+    const { params: { workoutId } } = req;
+
+    if (!workoutId) { return; }
+
+    const workout = workoutService.getOneWorkout(workoutId);
     res.send(`Get workout ${JSON.stringify(workout)}`)
 }
 
 const createNewWorkout = (req: Request, res: Response) => {
-    
-    const body = isWorkoutFromRequestValid(req);
 
-    if(!body){return;}
+    const { body } = req;
+    if
+        (
+        !body.name ||
+        !body.mode ||
+        !body.equipment ||
+        !body.exercises ||
+        !body.trainerTips
+    ) { return; }
 
-    const newWorkout : WorkoutFromRequest  = {
-        name : body.name,
-        mode : body.mode,
-        equipment : body.equipment,
-        exercises : body.exercises,
+    const newWorkout: WorkoutFromRequest = {
+        name: body.name,
+        mode: body.mode,
+        equipment: body.equipment,
+        exercises: body.exercises,
         trainerTips: body.trainerTips
     }
-    
+
     const createdWorkout = workoutService.createdWorkout(newWorkout);
-    res.status(201).send(`Created workout ${createdWorkout}`)
+    res.status(201).send(`Created workout ${JSON.stringify(createdWorkout)}`)
 }
 
 const updateOneWorkout = (req: Request, res: Response) => {
-    const body = isWorkoutFromRequestValid(req);
-    
-    if(!body){return;}
-    
-    const updatedWorkout = workoutService.updatedWorkout(req.params.workoutId, body);
+
+    const { body, params: { workoutId } } = req;
+
+    if (!workoutId) { return; }
+
+    const updatedWorkout = workoutService.updatedWorkout(workoutId, body);
     res.send(`Update workout ${JSON.stringify(updatedWorkout)}`)
 }
 
 const deleteOneWorkout = (req: Request, res: Response) => {
-    workoutService.deleteOneWorkout(req.params.workoutId);
-    res.send(`Delete workout ${req.params.workoutId}`)
+
+    const {params:{workoutId}} = req;
+
+    if(!workoutId){return;}
+    
+    workoutService.deleteOneWorkout(workoutId);
+    res.send(`Delete workout `)
 }
 
 
@@ -54,16 +70,3 @@ module.exports = {
     deleteOneWorkout
 }
 
-
-const isWorkoutFromRequestValid = (req: Request) =>{
-    const {body} = req;
-    if
-    (
-        !body.name ||
-        !body.mode ||
-        !body.equipment ||
-        !body.exercises ||
-        !body.trainerTips
-    ){return;}
-    return body;
-}

@@ -34,7 +34,7 @@ Small rest api example, using typescript, express and nodejs.
 #### Update workout
 
 ```http
-  GET /api/v1/workouts/${id}+${workout}
+  GET /api/v1/workouts/${id}&${workout}
 ```
 
 | Parameter | Type     | Description                       |

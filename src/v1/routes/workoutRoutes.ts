@@ -8,7 +8,7 @@ router
     .get('/', workoutController.getAllWorkouts)
     .get('/:workoutId', workoutController.getOneWorkout )
     .post('/', workoutController.createNewWorkout)
-    .patch('/:workoutId',  workoutController.updateOneWorkout)
+    .patch('/:workoutId&:workout',  workoutController.updateOneWorkout)
     .delete('/:workoutId', workoutController.deleteOneWorkout)
 
 module.exports = router;

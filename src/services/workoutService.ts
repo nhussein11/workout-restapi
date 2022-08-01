@@ -46,7 +46,8 @@ const updateOneWorkout = (id:string, newWorkout: WorkoutFromRequest) => {
     return newWorkout;
 }
 
-const deleteOneWorkout = () => {
+const deleteOneWorkout = (id:string) => {
+    
     return;
 }
 
