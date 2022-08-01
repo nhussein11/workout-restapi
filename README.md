@@ -15,6 +15,8 @@ Small rest api example, using typescript, express and nodejs.
 | `name`      | `string` | **Optional**. Name of workouts to fetch |
 | `mode`      | `string` | **Optional**. Mode of workouts to fetch |
 
+To use optional parameters, for example 'mode', you should: /api/v1/workouts?mode=amrap
+
 #### Get workout
 
 ```http
