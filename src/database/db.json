@@ -64,5 +64,39 @@
           "RX Weights: 205lb/145lb"
         ]
       }
+    ],
+    "members": [
+      {
+        "id": "12a410bc-849f-4e7e-bfc8-4ef283ee4b19",
+        "name": "Jason Miller",
+        "gender": "male",
+        "dateOfBirth": "23/04/1990",
+        "email": "jason@mail.com",
+        "password": "666349420ec497c1dc890c45179d44fb13220239325172af02d1fb6635922956"
+      },
+      {
+        "id": "2b9130d4-47a7-4085-800e-0144f6a46059",
+        "name": "Tiffany Brookston",
+        "gender": "female",
+        "dateOfBirth": "09/06/1996",
+        "email": "tiffy@mail.com",
+        "password": "8a1ea5669b749354110dcba3fac5546c16e6d0f73a37f35a84f6b0d7b3c22fcc"
+      },
+      {
+        "id": "11817fb1-03a1-4b4a-8d27-854ac893cf41",
+        "name": "Catrin Stevenson",
+        "gender": "female",
+        "dateOfBirth": "17/08/2001",
+        "email": "catrin@mail.com",
+        "password": "18eb2d6c5373c94c6d5d707650d02c3c06f33fac557c9cfb8cb1ee625a649ff3"
+      },
+      {
+        "id": "6a89217b-7c28-4219-bd7f-af119c314159",
+        "name": "Greg Bronson",
+        "gender": "male",
+        "dateOfBirth": "08/04/1993",
+        "email": "greg@mail.com",
+        "password": "a6dcde7eceb689142f21a1e30b5fdb868ec4cd25d5537d67ac7e8c7816b0e862"
+      }
     ]
   }
