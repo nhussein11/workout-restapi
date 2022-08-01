@@ -11,7 +11,17 @@ const getAllWorkouts = (_req: Request, res: Response) => {
 const getOneWorkout = (req: Request, res: Response) => {
     const { params: { workoutId } } = req;
 
-    if (!workoutId) { return; }
+    if (!workoutId) { 
+        res 
+        .status(400)
+        .send({
+            status:"FAILED",
+            data:{
+                error:"Key missing: 'workoutId'",
+            }
+        })
+        return; 
+    }
 
     const workout = workoutService.getOneWorkout(workoutId);
     res.send(`Get workout ${JSON.stringify(workout)}`)
@@ -27,7 +37,17 @@ const createNewWorkout = (req: Request, res: Response) => {
         !body.equipment ||
         !body.exercises ||
         !body.trainerTips
-    ) { return; }
+    ) { 
+        res 
+            .status(400)
+            .send({
+                status:"FAILED",
+                data:{
+                    error:"One of the following keys is missing or is empty in request body: 'name', 'mode', 'equipment', 'exercises', 'trainerTips'",
+                }
+            })
+        return;
+    }
 
     const newWorkout: WorkoutFromRequest = {
         name: body.name,
@@ -45,7 +65,17 @@ const updateOneWorkout = (req: Request, res: Response) => {
 
     const { body, params: { workoutId } } = req;
 
-    if (!workoutId) { return; }
+    if (!workoutId) { 
+        res 
+        .status(400)
+        .send({
+            status:"FAILED",
+            data:{
+                error:"Key missing: 'workoutId'",
+            }
+        })
+        return; 
+    }
 
     const updatedWorkout = workoutService.updatedWorkout(workoutId, body);
     res.send(`Update workout ${JSON.stringify(updatedWorkout)}`)
@@ -55,7 +85,18 @@ const deleteOneWorkout = (req: Request, res: Response) => {
 
     const {params:{workoutId}} = req;
 
-    if(!workoutId){return;}
+    if(!workoutId){
+        res 
+        .status(400)
+        .send({
+            status:"FAILED",
+            data:{
+                error:"Key missing: 'workoutId'",
+            }
+        })
+    
+        return;
+    }
     
     workoutService.deleteOneWorkout(workoutId);
     res.send(`Delete workout `)
