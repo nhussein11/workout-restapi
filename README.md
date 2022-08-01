@@ -70,7 +70,7 @@ To use optional parameters, for example 'mode', you should: /api/v1/workouts?mod
 | `id`      | `string` | **Required**. Id of workout to delete |
 
 
-#### API DOCS
+#### API DOCS :books:
 Search: http://localhost:3000/api/v1/docs/{endpoint}
 
 For example: 
